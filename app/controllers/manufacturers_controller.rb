@@ -1,9 +1,9 @@
 class ManufacturersController < ApplicationController
   def index
-    @manufacturers = Manufacturers.all
+    @manufacturers = Manufacturer.all
   end
   def show
     id = params[:id]
-    @manufacturer = 
+    @manufacturer = Manufacturer.id
   end
 end

@@ -1,0 +1,9 @@
+<h1> Lista de Marcas </h1>
+
+<ul>
+<% @manufacturers.each do |m| %>
+    <li><%= link_to "#{m.name}", @manufacturer %>
+    <% end %>
+</ul>
+
+<%= link_to 'Voltar', root_path%>
