@@ -1,0 +1,9 @@
+<h3> Filiais </h3>
+
+<% if @subsidiaries.empty? %>
+<p>Não existe filiais cadrastadas no sistema </p>
+<% end %>
+
+<% @subsidiaries.each do |subsidiary| %>
+  <%= link_to subsidiary.name, subsidiary_path(subsidiary) %>
+<% end %>
