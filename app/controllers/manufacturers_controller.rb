@@ -15,8 +15,28 @@ class ManufacturersController < ApplicationController
   def create
     @manufacturer = Manufacturer.create(manufacturer_params)
 
-    redirect_to @manufacturer
+    if @manufacturer.save
+      redirect_to @manufacturer
+    else
+      flash.now[:alert] = 'Todo os campos devem ser preenxidos'
+      render :new #não está rodando o new, só usando ele
+    end
   end
+
+  def edit
+    @manufacturer = Manufacturer.find(params[:id])
+  end
+
+  def update
+    @manufacturer = Manufacturer.find(params[:id])
+    if @manufacturer.update(manufacturer_params)
+      flash[:notice] = 'Fabricante atualizada com sucesso'
+      redirect_to @manufacturer
+    else
+      render :edit
+    end
+  end
+
   def manufacturer_params
     params.require(:manufacturer).permit(:name)
   end
